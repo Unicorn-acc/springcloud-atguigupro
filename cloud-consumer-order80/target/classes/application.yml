@@ -1,0 +1,26 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-consumer-order
+
+eureka:
+  client:
+    # false 代表不向服务注册中心注册自己，因为它本身就是服务中心
+    register-with-eureka: true   #将自己注册进EurekaServer
+    # false 代表自己就是服务注册中心，自己的作用就是维护服务实例，并不需要去检索服务
+    fetch-registry: true    #抓取已有的注册信息，集群设置为true才能配合ribbon使用负载均衡
+    service-url:
+      # 设置与 Eureka Server 交互的地址，查询服务 和 注册服务都依赖这个地址
+      #defaultZone: http://localhost:7001/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka/ , http://eureka7002.com:7002/eureka/ #集群版
+#客户端消费者80如何调用微服务提供者8001？
+#第一次调试 80端口被占用 sql server 的Reporting Services占用端口
+#https://www.cnblogs.com/firstdream/p/8057646.html
+#netsh http show servicestate
+
+#eureka:
+  #  client:
+  #    register-with-eureka: false
+  #    fetch-registry: false

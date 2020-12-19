@@ -1,0 +1,12 @@
+server:
+  port: 9001
+
+#豪猪哥
+
+#不变叶子就在Project Structure的Modules中子项目下添加Spring 关联application.yml文件
+
+#8001...图形化展现依赖
+  #        <dependency>
+  #            <groupId>org.springframework.boot</groupId>
+  #            <artifactId>spring-boot-starter-actuator</artifactId>
+  #        </dependency>

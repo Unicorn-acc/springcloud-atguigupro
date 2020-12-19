@@ -1,0 +1,30 @@
+#微服务一定要有端口号与微服务名称
+server:
+  port: 8002
+spring:
+  application:
+    name: cloud-payment-service #给微服务配置一个名字！这个名字就是这个微服务对外暴露的名字！
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/cloud2020?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 20181112623
+
+mybatis:  #mybatis整合
+  mapper-locations: classpath:mapper/*.xml  #resources文件夹下建mapper文件
+  type-aliases-package: springcloud.entities  # 所有Entity 别名类所在包
+
+eureka:
+  client:
+    # false 代表不向服务注册中心注册自己，因为它本身就是服务中心
+    register-with-eureka: true   #将自己注册进EurekaServer
+    # false 代表自己就是服务注册中心，自己的作用就是维护服务实例，并不需要去检索服务
+    fetch-registry: true    #抓取已有的注册信息，集群设置为true才能配合ribbon使用负载均衡
+    service-url:
+      # 设置与 Eureka Server 交互的地址，查询服务 和 注册服务都依赖这个地址
+      #defaultZone: http://localhost:7001/eureka/ 单机版
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/ #集群版
+  instance:
+      instance-id: payment8002  #
+      prefer-ip-address: true #显示ip

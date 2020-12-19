@@ -1,0 +1,28 @@
+server:
+  port: 80
+spring:
+  application:
+    name: cloud-customer-feign-hystrix-service
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+
+# 用于服务降级 在注解@FeignClient 中添加fallbackFactory 属性值
+feign:
+  hystrix:
+    enabled: true  # 在feign中开启 hystrix
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:  #默认超时时间1000ms
+            timeoutInMilliseconds: 1500  #线程超时时间
+#注释feign: hystrix: enabled: true,然后自己配置ribbon超时大于的hystrix时间
+ribbon:
+  ConnectTimeout: 20000 #ribbon超时时间
+  ReadTimeout: 50000

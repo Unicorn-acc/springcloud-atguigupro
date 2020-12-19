@@ -1,0 +1,15 @@
+server:
+  port: 80
+
+spring:
+  cloud:
+    zookeeper:
+      connect-string: 192.168.1.103:2181
+  application:
+    name: cloud-customer-order
+
+#是打开的快捷方式错误，报错：
+#Connected to the target VM, address: '127.0.0.1:58241', transport: 'socket'
+#Disconnected from the target VM, address: '127.0.0.1:58241', transport: 'socket'
+#
+#Process finished with exit code -1073741819 (0xC0000005)

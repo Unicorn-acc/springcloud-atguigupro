@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="springcloud.dao.PaymentDao"> <!--映射哪个接口,PaymentDao点的进去表示关联成功-->
+
+    <!--pom yml配置ok写入会有提示--> <!-- parameterType传入参数类型  KeyProerty返回值类型-->
+    <insert id="create" parameterType="Payment" useGeneratedKeys="true" keyProperty="id">
+        insert into payment(serial) value (#{serial});
+    </insert>
+
+    <!--resultMap 返回值 映射-->
+    <resultMap id="BaseResultMap" type="springcloud.entities.Payment">
+        <!--在这里实现字段的一一映射-->
+        <!--column数据库中列名   property java中属性-->
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <id column="serial" property="serial" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getPaymentById" parameterType="Long" resultMap="BaseResultMap">
+        select * from payment where id=#{id};
+    </select>
+
+</mapper>
