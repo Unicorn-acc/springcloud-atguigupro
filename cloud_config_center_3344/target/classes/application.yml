@@ -1,0 +1,39 @@
+server:
+  port: 3344
+spring:
+  application:
+    name: cloud-config-center  # 注册进eureka Server 的微服务名
+  cloud:
+    config:
+      server:
+        git: #自己的github上的地址
+          uri: https://github.com/Unicorn-acc/springcloud-config.git # github 仓库位置
+          username: 1049236690@qq.com
+          password: 1049236690wz
+          ## 搜索目录
+          search-paths:
+            - springcloud-config
+          # 读取的分支
+          label: master
+# rabbitMq的相关配置
+  rabbitmq:
+    host: 192.168.1.109
+    port: 5672
+    username: admin
+    password: admin
+    #curl -X POST "http://localhost:3344/actuator/bus-refresh" 消息总线刷新所有客户端配置
+    #实现全局广播刷新
+    #局部通知curl -X POST "http://localhost:3344/actuator/bus-refresh/config-client:3355"
+
+# rabbitmq 的相关配置2 暴露bus刷新配置的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'bus-refresh'
+#
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+

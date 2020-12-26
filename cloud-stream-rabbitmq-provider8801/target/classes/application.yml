@@ -1,0 +1,42 @@
+server:
+  port: 8801 #cloud-stream-provider
+spring:
+  application:
+    name: cloud-stream-provider
+  rabbitmq:
+    host: 192.168.1.109
+    port: 5672
+    username: admin
+    password: admin
+  cloud:
+    stream:
+      binders:
+        defaultRabbit:
+          type: rabbit #消息组件的类型
+      bindings: #服务的整合处理
+        output: #OUTPUT表示生产者，向rabbitmq发送消息
+          destination: cruiiExchange # 表示要使用的Exchange名称
+          content-type: application/json  # 设置消息类型，本次是json，文本是 "text/plain"
+          binder: defaultRabbit # 设置要绑定的消息服务的具体配置
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+  instance:
+    lease-renewal-interval-in-seconds: 2 # 设置心跳时间，默认是30秒
+    lease-expiration-duration-in-seconds: 5 # 最大心跳间隔不能超过5秒,默认90秒
+    instance-id: send-8801.com # 在信息列表显示主机名称
+    prefer-ip-address: true # 访问路径变为ip地址
+
+#视频里的application.yml使用了
+  #spring.cloud.stream.binders.defaultRabbit.environment.spring.rabbitmq.xx
+  #来配置rabbitmq的环境
+  #
+  #如果你是用的其他服务器上的rabbitmq，比如我使用的我自己的阿里云服务器然后创建docker容器来运行rabbitmq。
+  #按照视频中的配置方式的话，启动时会试图连接两次rabbitmq程序
+  #第一次试图连接访问的就是application.yml中配置的地址，此时已经订阅成功了
+  #但是程序还会在之后进行第二次连接，此时访问的地址就是localhost:5672，在我的环境中，我本地没有rabbitmq环境，所以直接报IOException。
+  #
+  #所以，如果是使用的自己的服务器来配置，则需要修改配置文件，将rabbitmq的配置信息移动到application.yml中的spring节点下

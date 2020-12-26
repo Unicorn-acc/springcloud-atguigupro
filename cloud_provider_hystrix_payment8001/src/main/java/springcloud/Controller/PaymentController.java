@@ -46,5 +46,4 @@ public class PaymentController {
         return paymentService.paymentCircuitBreaker(id);
     }
 
-
 }

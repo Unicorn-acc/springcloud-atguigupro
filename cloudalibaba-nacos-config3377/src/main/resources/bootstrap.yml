@@ -1,0 +1,21 @@
+server:
+  port: 3377
+spring:
+  application:
+    name: nacos-config-client
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848  # nacos作为服务注册中心
+      config:
+        server-addr: localhost:8848 # nacos作为服务配置中心
+        file-extension: yaml # 指定yaml 格式的配置
+        #group: DEV_GROUP #划定Group分组属性
+        #namespace: public
+        #去nacos上读取yaml格式的配置文件
+
+#nacos-config-client-dev.yaml
+
+#Nacos同springcloudconfig一样
+#bootstrap优先级高于application，自己的配置放在bootstrap
+#项目初始化先配置中心拉取配置，再有自己本地的配置这样才能保证项目的正常启动

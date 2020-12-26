@@ -12,6 +12,11 @@
     <artifactId>cloud_provider_hystrix_payment8001</artifactId>
 
     <dependencies>
+        <!-- 引入sleuth + zipkin -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
         <!-- hystrix -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

@@ -1,0 +1,39 @@
+#application.yml是用户级的资源配置项
+#bootstrap.yml是系统级的资源配置项，优先级更高
+#加载的时候bootstrap.yml先加载，不会被本地配置覆盖
+#云端仓库更改后重启才能解决？ --动态刷新
+server:
+  port: 3355
+
+spring:
+  application:
+    name: config-client
+  cloud:
+    # config 客户端配置
+    config:
+      label: master         # 分支名称
+      name: config       # 配置文件名称
+      profile: dev       # 使用配置环境
+      uri: http://config-3344.com:3344  # config Server 地址
+  # 综合上面四个 即读取配置文件地址为： http://config-3344.com:3344/master/config-dev.yml
+  #去config Server 地址找一个master分支上config-dev.yml的配置文件
+  # rabbitMq的相关配置
+  rabbitmq:
+    host: 192.168.1.100
+    port: 5672
+    username: admin
+    password: admin
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+# 动态刷新 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -1,0 +1,18 @@
+#直接复制module
+#https://blog.csdn.net/llllllllll4er5ty/article/details/104425284
+server:
+  port: 9002
+spring:
+  application:
+    name: nacos-payment-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+#暴露端口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

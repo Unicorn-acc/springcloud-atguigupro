@@ -8,21 +8,38 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="cloud_consumerzk_order80" />
-        <module name="cloud-customer-feign-order80" />
         <module name="cloud_provider_hystrix_payment8001" />
         <module name="cloud-customerconsul-order82" />
         <module name="cloud-customer-feign-hystrix-order80" />
-        <module name="cloud-providerconsul-service8006" />
+        <module name="cloudalibaba-consumer-nacos-order84" />
+        <module name="cloud-stream-rabbitmq-provider8801" />
+        <module name="cloud-stream-rabbitmq-consumer8802" />
+        <module name="cloud-stream-rabbitmq-consumer8803" />
         <module name="cloud_provider_payment8004" />
         <module name="cloud_provider_payment8002" />
         <module name="cloud_provider_payment8001" />
-        <module name="cloud_consumer_hystrix-dashboard9001" />
-        <module name="cloud-consumer-order80" />
         <module name="cloud_eureka_server7002" />
+        <module name="cloud-config-client-3366" />
         <module name="cloud_api_commons" />
         <module name="cloud_eureka_server7001" />
         <module name="cloud_gateway_gateway9527" />
+        <module name="cloud-customer-feign-order80" />
+        <module name="cloudalibaba-nacos-config3377" />
+        <module name="cloud-providerconsul-service8006" />
+        <module name="cloudalibaba-provider-payment9004" />
+        <module name="cloudalibaba-provider-payment9003" />
+        <module name="cloudalibaba-provider-payment9002" />
+        <module name="cloudalibaba-provider-payment9001" />
+        <module name="cloudalibaba-consumer-nacos-order83" />
+        <module name="cloud_consumer_hystrix-dashboard9001" />
+        <module name="cloud_config_center_3344" />
+        <module name="cloud-consumer-order80" />
+        <module name="cloudalibaba-sentinel-service8401" />
+        <module name="cloud-config-client-3355" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cloudalibaba-provider-payment9001 (1)" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
