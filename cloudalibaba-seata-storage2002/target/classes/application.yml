@@ -1,0 +1,27 @@
+server:
+  port: 2002
+spring:
+  application:
+    name: seata-storage-service
+  cloud:
+    alibaba:
+      seata:
+        # 自定义事务组，需要和当时在 seata/conf/file.conf 中的一致
+        tx-service-group: abc
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/seata_storage
+    username: root
+    password: 20181112623
+
+# 注意，这是自定义的，原来的是mapper_locations
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+
+logging:
+  level:
+    io:
+      seata: info
